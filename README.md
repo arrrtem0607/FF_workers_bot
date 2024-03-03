@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 3. Получите токен бота Telegram и запишите его в файл `data/token.json.`
 
-4. Создайте и настройте файл `googledata.json` с данными авторизации для доступа к Google Sheets API.
+4. Создайте и настройте файл `data/googledata.json` с данными авторизации для доступа к Google Sheets API.
 
 5. Запустите бота:
 
