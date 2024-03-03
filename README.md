@@ -32,7 +32,7 @@ git clone https://github.com/yourusername/fulfillment_efficiency_bot.git
 pip install -r requirements.txt
 
 
-3. Получите токен бота Telegram и запишите его в файл `data/token.json.
+3. Получите токен бота Telegram и запишите его в файл `data/token.json.`
 
 4. Создайте и настройте файл `googledata.json` с данными авторизации для доступа к Google Sheets API.
 
