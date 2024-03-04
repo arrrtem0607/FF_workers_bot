@@ -53,8 +53,8 @@ def end_packing(message, bot):
     start_time = packing_start_info[user_id]['start_time']
     end_time = time.time()
     packing_duration = end_time - start_time
-    salary = 3000  # TODO: внести зарплату в БД
-    work_cost = (packing_duration/3600) * salary  # TODO: усовершенствовать функция подсчета стоимости работы
+    salary = get_salary(user_id, authorized_users, default_salary=None)
+    work_cost = (packing_duration/3600) * salary
 
     tracker_sheet = get_sheet(packing_tracker)
     row_number = find_row_by_packing_id(tracker_sheet, packing_id)
@@ -82,10 +82,19 @@ def count_packing_data(message, bot, packing_id):
         bot.register_next_step_handler(message, count_packing_data)  # Запрашиваем ввод ещё раз
         return
 
+    quantity = int(quantity)  # Преобразование текста в число
+
     try:
         tracker_sheet = get_sheet(packing_tracker)
         row_number = find_row_by_packing_id(tracker_sheet, packing_id)
+        work_cost_str = tracker_sheet.cell(row_number, 7).value.replace(',', '.')  # Замена запятой на точку
+        work_cost = float(work_cost_str)  # Извлечение значения ячейки и преобразование в число
+        if work_cost == 0:
+            bot.send_message(user_id, "Стоимость работы не может быть 0.")
+            return
+        cost_per_cnt = work_cost / quantity
         tracker_sheet.update_cell(row_number, 8, quantity)  # Обновляем количество в таблице
+        tracker_sheet.update_cell(row_number, 9, cost_per_cnt)
         bot.send_message(user_id, "Количество упакованных товаров сохранено. Упаковка завершена.")
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         next_packing_button = KeyboardButton("Упаковать следующий товар")
@@ -101,3 +110,24 @@ def find_row_by_packing_id(sheet, parametr):
         if record.get('ID упаковки') == parametr:
             return index
     return None
+
+
+def get_salary(user_id, authorized_users, default_salary=None):
+    """
+    Получает значение зарплаты для данного user_id из словаря authorized_users.
+    Пытается преобразовать значение зарплаты в число с плавающей точкой.
+    В случае отсутствия значения зарплаты или ошибки преобразования, возвращает default_salary.
+
+    :param user_id: Идентификатор пользователя, для которого нужно получить зарплату.
+    :param authorized_users: Словарь, содержащий информацию о пользователях и их зарплатах.
+    :param default_salary: Значение зарплаты по умолчанию, возвращаемое в случае отсутствия зарплаты или ошибки.
+    :return: Значение зарплаты как число с плавающей точкой или default_salary.
+    """
+    user_salary_str = authorized_users.get(user_id, {}).get('salary')
+    default_salary = 3000.0
+    if user_salary_str is None:
+        return default_salary
+    try:
+        return float(user_salary_str)
+    except ValueError:
+        return default_salary

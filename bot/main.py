@@ -4,7 +4,7 @@ from bot.handlers import setup_handlers
 import json
 
 def main():
-    with open('../data/token.json') as file:
+    with open('data/token.json') as file:
         data = json.load(file)
     bot = telebot.TeleBot(data['TOKEN'])
     setup_handlers(bot)

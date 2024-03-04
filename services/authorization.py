@@ -17,9 +17,10 @@ def authorize_contact(message, bot):
             # Если номер найден, извлекаем информацию о пользователе
             user_name = sheet.cell(cell.row, 1).value  # Имя пользователя находится в первой колонке
             user_role = sheet.cell(cell.row, 3).value  # Роль пользователя находится в третьей колонке
+            user_salary = sheet.cell(cell.row, 4).value  # Роль пользователя находится в третьей колонке
 
             # Сохраняем статус авторизации пользователя
-            authorized_users[message.chat.id] = {"name": user_name, "role": user_role}
+            authorized_users[message.chat.id] = {"name": user_name, "role": user_role, "salary": user_salary}
 
             # Создаем разметку клавиатуры с кнопкой "Начать упаковку"
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
