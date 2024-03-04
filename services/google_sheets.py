@@ -13,7 +13,7 @@ def initialize_google_sheets():
 
     # Инициализация клиента Google Sheets
     scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name("../data/googledata.json", scopes)
+    creds = ServiceAccountCredentials.from_json_keyfile_name("data/googledata.json", scopes)
     client = gspread.authorize(creds)
 
 
@@ -21,7 +21,7 @@ def get_sheet(sheet_name):
     global client
     if client is None:
         initialize_google_sheets()
-    document_link = "https://docs.google.com/spreadsheets/d/1iqIx6elY_pO4NdKUz-U_8f6J-zfclUMMP_0rqfN3Rpo/edit#gid=0"
+    document_link = "https://docs.google.com/spreadsheets/d/1eLfjVYNpNjWN6Ui9qQQpwcjc07erTMMy_HugzldOXhM/edit#gid=0"
     try:
         document = client.open_by_url(document_link)
         sheet = document.worksheet(sheet_name)

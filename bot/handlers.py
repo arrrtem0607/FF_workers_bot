@@ -19,6 +19,8 @@ def setup_handlers(bot):
     def request_contact(message):
         if check_authorization_status(message.chat.id):
             bot.send_message(message.chat.id, "Вы уже авторизованы.")
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+            markup.row(types.KeyboardButton('Начать упаковку'))
         else:
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
             button_phone = types.KeyboardButton(text="Отправить мой номер телефона", request_contact=True)
