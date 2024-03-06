@@ -38,7 +38,11 @@ pip install -r requirements.txt
 
 5. Запустите бота из корневой директории:
 
-python bot/main.py
+cd /root/FF_workers_bot
+tmux new -s botSession
+cd /root/FF_workers_bot
+source myenv/bin/activate
+python -m bot.main
 
 
 ## Структура проекта:
