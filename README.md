@@ -43,10 +43,16 @@ pip install -r requirements.txt
 
 ```
 cd /root/FF_workers_bot
-tmux new -s botSession
+tmux new -s botSession #для запуска беспрерывной сессии терминала botSession это название сессии
 cd /root/FF_workers_bot
 source myenv/bin/activate
 python -m bot.main
+```
+
+7. Для дальнейшего подключения к непрерывной сессии:
+```
+tmux ls
+tmux attach -t [session-name]
 ```
 
 
