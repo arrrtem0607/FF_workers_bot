@@ -22,7 +22,7 @@
 
 ## Установка и настройка:
 
-1. Склонируйте репозиторий:
+1.1 Склонируйте репозиторий:
 ```
 git clone https://токен@github.com/arrrtem0607/FF_workers_bot.git
 #введите токен вашего github
@@ -30,7 +30,10 @@ git clone https://токен@github.com/arrrtem0607/FF_workers_bot.git
 Токен для Артема
 ```
 
-
+1.2 Перейти в рабочую директорию:
+```
+git checkout develop
+```
 2. Установите необходимые зависимости:
 ```
 pip install -r requirements.txt
