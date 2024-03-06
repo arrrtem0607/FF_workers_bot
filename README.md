@@ -24,16 +24,16 @@
 
 1. Склонируйте репозиторий:
 
-'''
+```
 git clone https://github.com/yourusername/fulfillment_efficiency_bot.git
-'''
+```
 
 
 2. Установите необходимые зависимости:
 
-'''
+```
 pip install -r requirements.txt
-'''
+```
 
 4. Получите токен бота Telegram и запишите его в файл `data/token.json.`
 
@@ -41,13 +41,13 @@ pip install -r requirements.txt
 
 6. Запустите бота из корневой директории:
 
-'''
+```
 cd /root/FF_workers_bot
 tmux new -s botSession
 cd /root/FF_workers_bot
 source myenv/bin/activate
 python -m bot.main
-'''
+```
 
 
 ## Структура проекта:
