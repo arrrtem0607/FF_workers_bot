@@ -26,6 +26,8 @@
 ```
 git clone https://токен@github.com/arrrtem0607/FF_workers_bot.git
 #введите токен вашего github
+# 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 
+Токен для Артема
 ```
 
 
