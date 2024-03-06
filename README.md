@@ -23,14 +23,13 @@
 ## Установка и настройка:
 
 1. Склонируйте репозиторий:
-
 ```
-git clone https://github.com/yourusername/fulfillment_efficiency_bot.git
+git clone https://токен@github.com/arrrtem0607/FF_workers_bot.git
+#введите токен вашего github
 ```
 
 
 2. Установите необходимые зависимости:
-
 ```
 pip install -r requirements.txt
 ```
@@ -38,9 +37,13 @@ pip install -r requirements.txt
 4. Получите токен бота Telegram и запишите его в файл `data/token.json.`
 
 5. Создайте и настройте файл `data/googledata.json` с данными авторизации для доступа к Google Sheets API.
+   
+7. Создайте виртуальное окружение
+```
+virtualenv --python=/usr/bin/python3.12 myenv
+```
 
-6. Запустите бота из корневой директории:
-
+8. Запустите бота из корневой директории:
 ```
 cd /root/FF_workers_bot
 tmux new -s botSession #для запуска беспрерывной сессии терминала botSession это название сессии
@@ -49,10 +52,15 @@ source myenv/bin/activate
 python -m bot.main
 ```
 
-7. Для дальнейшего подключения к непрерывной сессии:
+9. Для дальнейшего подключения к непрерывной сессии:
 ```
 tmux ls
 tmux attach -t [session-name]
+```
+для завершение процесса
+```
+tmux ls
+tmux kill-session -t [session-name]
 ```
 
 
