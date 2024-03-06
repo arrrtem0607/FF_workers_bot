@@ -1,11 +1,15 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import json
 
 # Глобальные переменные
 client = None
 authorization = "Авторизация"
 products = "Товарная матрица"
 packing_tracker = "Трекер"
+with open('data/token.json') as file:
+    data = json.load(file)
+sheet_link = data['SHEET_LINK']
 
 
 def initialize_google_sheets():
@@ -21,9 +25,8 @@ def get_sheet(sheet_name):
     global client
     if client is None:
         initialize_google_sheets()
-    document_link = "https://docs.google.com/spreadsheets/d/1eLfjVYNpNjWN6Ui9qQQpwcjc07erTMMy_HugzldOXhM/edit#gid=0"
     try:
-        document = client.open_by_url(document_link)
+        document = client.open_by_url(sheet_link)
         sheet = document.worksheet(sheet_name)
         return sheet
     except gspread.exceptions.WorksheetNotFound:
