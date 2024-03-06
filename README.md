@@ -24,25 +24,30 @@
 
 1. Склонируйте репозиторий:
 
+'''
 git clone https://github.com/yourusername/fulfillment_efficiency_bot.git
+'''
 
 
 2. Установите необходимые зависимости:
 
+'''
 pip install -r requirements.txt
+'''
 
+4. Получите токен бота Telegram и запишите его в файл `data/token.json.`
 
-3. Получите токен бота Telegram и запишите его в файл `data/token.json.`
+5. Создайте и настройте файл `data/googledata.json` с данными авторизации для доступа к Google Sheets API.
 
-4. Создайте и настройте файл `data/googledata.json` с данными авторизации для доступа к Google Sheets API.
+6. Запустите бота из корневой директории:
 
-5. Запустите бота из корневой директории:
-
-- cd /root/FF_workers_bot
-- tmux new -s botSession
-- cd /root/FF_workers_bot
-- source myenv/bin/activate
-- python -m bot.main
+'''
+cd /root/FF_workers_bot
+tmux new -s botSession
+cd /root/FF_workers_bot
+source myenv/bin/activate
+python -m bot.main
+'''
 
 
 ## Структура проекта:
