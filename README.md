@@ -32,6 +32,7 @@ git clone https://токен@github.com/arrrtem0607/FF_workers_bot.git
 
 1.2 Перейти в рабочую директорию:
 ```
+cd FF_workers_bot
 git checkout develop
 ```
 2. Установите необходимые зависимости:
